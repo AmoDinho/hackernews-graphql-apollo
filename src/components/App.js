@@ -17,12 +17,12 @@ class App extends Component {
           <Route exact path="/" render={() => <Redirect to='/new/1'/>} />
           <Route exact path="/create" component={CreateLink} />
           <Route exact path="/login" component={Login} />
-            <Route exact path="/top" component={LinkList} />
-            <Route exact path="/new/:page" component={LinkList} />
-            <Route exact path='/search' component={Search} />
+          <Route exact path="/top" component={LinkList} />
+          <Route exact path="/new/:page" component={LinkList} />
+          <Route exact path='/search' component={Search} />
           </Switch>
         </div>
-      </div>
+      </div> 
     )
   }
 }

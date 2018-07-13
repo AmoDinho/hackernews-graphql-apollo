@@ -28,7 +28,7 @@ class Link extends Component{
               ? this.props.link.postedBy.name
                : 'Unknown'}{' '}
             {timeDifferenceForDate(this.props.link.createdAt)}
-          {console.log(this.props.link.votes.length)}
+         
            </div>
            </div>
            </div>
