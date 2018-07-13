@@ -11,6 +11,7 @@ class Link extends Component{
         return(
            <div className="flex mt2 items-start">
            <div className="flex items-center">
+           <span className="gray">{this.props.index + 1}.</span>
            {authToken && (
                <div className="ml1 gray fl1" onClick={() => this._voteForLink()}> 
                 ▲
@@ -27,6 +28,7 @@ class Link extends Component{
               ? this.props.link.postedBy.name
                : 'Unknown'}{' '}
             {timeDifferenceForDate(this.props.link.createdAt)}
+          {console.log(this.props.link.votes.length)}
            </div>
            </div>
            </div>
@@ -47,9 +49,9 @@ class Link extends Component{
 }
 
 
-const VOTE_MUTATION =gql`
+const VOTE_MUTATION = gql`
    mutation VoteMutation($linkId: ID!){
-       Vote(linkId: $linkId){
+       vote(linkId: $linkId){
          id
          link{
              votes{
