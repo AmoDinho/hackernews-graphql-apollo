@@ -1,17 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './styles/index.css';
-import App from './components/App';
-import registerServiceWorker from './registerServiceWorker';
-import {ApolloProvider} from 'react-apollo';
-import {ApolloClient} from 'apollo-client';
-import {HttpLink} from 'apollo-link-http';
-import {InMemoryCache} from 'apollo-cache-inmemory';
-import {BrowserRouter} from 'react-router-dom';
-import {AUTH_TOKEN} from './constants';
-import {ApolloLink, split} from 'apollo-client-preset';
-import {WebSocketLink} from 'apollo-link-ws';
-import {getMainDefinition} from 'apollo-utilities';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './styles/index.css'
+import App from './components/App'
+import registerServiceWorker from './registerServiceWorker'
+import {ApolloProvider} from 'react-apollo'
+import {ApolloClient} from 'apollo-client'
+import {HttpLink} from 'apollo-link-http'
+import {InMemoryCache} from 'apollo-cache-inmemory'
+import {BrowserRouter} from 'react-router-dom'
+import {AUTH_TOKEN} from './constants'
+import {ApolloLink, split} from 'apollo-client-preset'
+import {WebSocketLink} from 'apollo-link-ws'
+import {getMainDefinition} from 'apollo-utilities'
 
 const httpLink = new HttpLink({uri: 'http://localhost:4000'})
 
@@ -30,7 +30,7 @@ const httpLinkWithAuthToken = middlewareAuthLink.concat(httpLink)
 
 
 const wsLink = new WebSocketLink({
-    uri:`ws://localhost:4000`,
+    uri:'ws://localhost:4000',
     options:{
         reconnect:true,
         connectionParams:{
@@ -45,7 +45,7 @@ const link = split(
         return kind === 'OperationDefinition' && operation === 'subscription'
     },
     wsLink,
-    httpLinkWithAuthToken,
+    httpLinkWithAuthToken
 )
 
 
@@ -56,14 +56,12 @@ const client = new ApolloClient({
 })
 
 
-
+/* eslint-disable */
 ReactDOM.render(
     <BrowserRouter>
-         <ApolloProvider client={client}>
-       <App />
-        </ApolloProvider>
-</BrowserRouter>
+    <ApolloProvider client={client}>
+    <App />
+    </ApolloProvider>
+    </BrowserRouter> , document.getElementById('root'))
 
-, document.getElementById('root'),);
-
-registerServiceWorker();
+registerServiceWorker()
